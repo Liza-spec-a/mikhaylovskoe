@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Аудиогид — Усадьба Михайловское</title>
+  <link rel="icon" href="mono.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kurale&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="star" viewBox="0 0 100 100"><path d="M50 0 C54 34 66 46 100 50 C66 54 54 66 50 100 C46 66 34 54 0 50 C34 46 46 34 50 0Z"/></symbol>
+</svg>
+
+<header class="header is-solid">
+  <div class="container header__inner">
+    <a class="logo" href="index.html"><img src="mono.jpg" alt=""><span>Михайловское<small>аудиогид</small></span></a>
+    <a class="btn btn--ghost" href="index.html#map" style="padding:10px 18px;font-size:.85rem">Карта парка</a>
+  </div>
+</header>
+
+<section class="guide-hero" id="ghero">
+  <div class="container">
+    <div class="eyebrow" id="gtype" style="color:var(--gold)"></div>
+    <h1 id="gname"></h1>
+  </div>
+</section>
+
+<main class="container guide-body">
+  <div class="audio">
+    <button class="audio__btn" id="play" aria-label="Слушать">
+      <svg width="22" height="22" viewBox="0 0 24 24" id="playIcon"><path d="M7 4l13 8-13 8z" fill="currentColor"/></svg>
+    </button>
+    <div style="flex:1">
+      <b>Аудиогид</b><div style="font-size:.85rem;opacity:.75;margin-bottom:8px">Слушайте рассказ, гуляя по парку</div>
+      <div class="audio__bar"><i id="bar"></i></div>
+    </div>
+  </div>
+  <p id="gtext" style="font-size:1.1rem"></p>
+  <div class="facts" id="gfacts"></div>
+  <div class="divider"><svg class="star"><use href="#star"/></svg></div>
+  <h3>Другие места парка</h3>
+  <nav class="guide-nav" id="gnav"></nav>
+</main>
+
+<footer class="footer"><div class="footer__drawing"></div>
+  <div class="container footer__inner"><div>© 2026 Усадьба Михайловское</div><a href="index.html#afisha">Афиша</a></div>
+</footer>
+
+<script src="data.js"></script>
+<script>
+  const id = new URLSearchParams(location.search).get("place") || "dom";
+  const P = window.PLACES, p = P[id] || P.dom;
+  document.title = p.name + " — Усадьба Михайловское";
+  document.getElementById("ghero").style.backgroundImage = `url(${p.img})`;
+  document.getElementById("gtype").textContent = p.type;
+  document.getElementById("gname").textContent = p.name;
+  document.getElementById("gtext").textContent = p.text;
+  document.getElementById("gfacts").innerHTML = p.facts.map(f => `<div><b>${f[0]}</b>${f[1]}</div>`).join("");
+  document.getElementById("gnav").innerHTML = Object.entries(P).map(([k, v]) =>
+    `<a href="guide.html?place=${k}" class="${k === id ? "is-active" : ""}">${v.name}</a>`).join("");
+
+  /* Аудиогид: положите файл audio-<id>.mp3 (например audio-alleya.mp3).
+     Если файла нет — текст читается голосом браузера. */
+  const audio = new Audio(`audio-${id}.mp3`);
+  let useSpeech = false, playing = false;
+  audio.addEventListener("error", () => useSpeech = true);
+  audio.addEventListener("timeupdate", () => bar.style.width = (audio.currentTime / audio.duration * 100 || 0) + "%");
+  audio.addEventListener("ended", stop);
+  const btn = document.getElementById("play"), icon = document.getElementById("playIcon"), bar = document.getElementById("bar");
+  function setIcon(on) { icon.innerHTML = on ? '<path d="M6 4h4v16H6zM14 4h4v16h-4z" fill="currentColor"/>' : '<path d="M7 4l13 8-13 8z" fill="currentColor"/>'; }
+  function stop() { playing = false; setIcon(false); speechSynthesis.cancel(); audio.pause(); }
+  btn.addEventListener("click", () => {
+    if (playing) return stop();
+    playing = true; setIcon(true);
+    if (!useSpeech) { audio.play().catch(() => { useSpeech = true; speak(); }); } else speak();
+  });
+  function speak() {
+    const u = new SpeechSynthesisUtterance(p.name + ". " + p.text);
+    u.lang = "ru-RU"; u.rate = .95;
+    const len = u.text.length;
+    u.onboundary = e => bar.style.width = (e.charIndex / len * 100) + "%";
+    u.onend = () => { bar.style.width = "100%"; stop(); };
+    speechSynthesis.speak(u);
+  }
+</script>
+</body>
+</html>

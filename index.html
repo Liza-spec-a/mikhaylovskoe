@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Усадьба Михайловское — усадьба садового искусства</title>
+  <meta name="description" content="Усадьба Михайловское, XVIII век: афиша выставок, лекций и мастер-классов, история, интерактивная карта парка, виртуальный тур и аренда площадок.">
+  <meta property="og:title" content="Усадьба Михайловское">
+  <meta property="og:description" content="Усадьба садового искусства и традиционных ремёсел">
+  <meta property="og:image" content="facade.jpg">
+  <link rel="icon" href="mono.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kurale&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <!-- Яндекс Метрика: вставьте сюда код счётчика из metrika.yandex.ru -->
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="star" viewBox="0 0 100 100"><path d="M50 0 C54 34 66 46 100 50 C66 54 54 66 50 100 C46 66 34 54 0 50 C34 46 46 34 50 0Z"/></symbol>
+</svg>
+
+<!-- ===== ШАПКА ===== -->
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a class="logo" href="#top">
+      <img src="mono.jpg" alt="Монограмма усадьбы">
+      <span>Михайловское<small>усадьба · XVIII век</small></span>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#afisha">Афиша</a>
+      <a href="#history">История</a>
+      <a href="#map">Карта парка</a>
+      <a href="#tour">Виртуальный тур</a>
+      <a href="#rent">Аренда</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ===== ГЛАВНАЯ ===== -->
+<section class="hero" id="top">
+  <div class="hero__bg"></div>
+  <div class="container hero__content">
+    <div class="hero__kicker"><svg class="star"><use href="#star"/></svg> Объект культурного наследия федерального значения</div>
+    <h1>Усадьба Михайловское</h1>
+    <p class="hero__lead">Усадьба садового искусства и традиционных ремёсел. Выставки и лекторий в главном доме, мастерские во флигелях, иммерсивные вечера и парк, открытый для прогулок.</p>
+    <div class="hero__actions">
+      <a class="btn" href="#afisha">Смотреть афишу</a>
+      <a class="btn btn--ghost" href="#map">Карта парка</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ОБ УСАДЬБЕ ===== -->
+<section class="section">
+  <div class="container about">
+    <div class="reveal">
+      <div class="eyebrow">Усадьба сегодня</div>
+      <h2>Общественное пространство в историческом парке</h2>
+      <p>Михайловское — это не музей за стеклом, а живая усадьба. Здесь можно прийти на выставку и лекцию, записаться в керамическую или ботаническую мастерскую, провести вечер на иммерсивном балу или просто погулять по липовой аллее.</p>
+      <ul class="pillars">
+        <li><b>1</b>Парк как пространство садового искусства и оздоровления</li>
+        <li><b>2</b>Исторические здания как центр культуры и ремёсел</li>
+        <li><b>3</b>Возрождение традиций усадебной жизни</li>
+        <li><b>4</b>Променад как связующее общественное пространство</li>
+      </ul>
+    </div>
+    <div class="about__collage reveal">
+      <img src="alley.jpg" alt="Аллея парка с фонтаном">
+      <img src="manor.jpg" alt="Главный дом в парке">
+    </div>
+  </div>
+  <div class="container" style="margin-top:90px">
+    <div class="section__head reveal">
+      <div class="eyebrow">Ближайшие события</div>
+      <h2>Скоро в усадьбе</h2>
+    </div>
+    <div class="upcoming events" id="upcoming"></div>
+  </div>
+</section>
+
+<!-- ===== АФИША ===== -->
+<section class="section dark" id="afisha">
+  <div class="container">
+    <div class="section__head reveal">
+      <div class="eyebrow">Афиша</div>
+      <h2>Выставки, лекции и мастер-классы</h2>
+      <p>Выберите событие и запишитесь онлайн — оплата прямо на сайте.</p>
+      <div class="divider"><svg class="star"><use href="#star"/></svg></div>
+    </div>
+    <div class="filters" id="filters"></div>
+    <div class="events" id="events"></div>
+  </div>
+</section>
+
+<!-- ===== ИСТОРИЯ ===== -->
+<section class="section dark history" id="history" style="background:var(--green-deep)">
+  <div class="container">
+    <div class="section__head reveal">
+      <div class="eyebrow">История усадьбы</div>
+      <h2>Два с половиной века Михайловского</h2>
+      <div class="divider"><svg class="star"><use href="#star"/></svg></div>
+    </div>
+    <div class="timeline">
+      <div class="timeline__col reveal">
+        <div class="tl"><div class="tl__year">1776<br>1785</div><p>Постройка главного здания при М. Н. Кречетникове</p></div>
+        <div class="tl"><div class="tl__year">1800</div><p>Усадьба перешла к А. С. Мясоедовой</p></div>
+        <div class="tl"><div class="tl__year">1807</div><p>Усадьбу приобретают супруги Засецкие</p></div>
+        <div class="tl"><div class="tl__year">1823</div><p>Начало первых перестроек при С. В. Шереметеве</p></div>
+      </div>
+      <div class="timeline__img"><img src="angel.jpg" alt="Скульптура ангела"></div>
+      <div class="timeline__col timeline__col--right reveal">
+        <div class="tl"><div class="tl__year">1838</div><p>Постройка оранжереи при А. С. Мусине-Пушкине</p></div>
+        <div class="tl"><div class="tl__year">1870</div><p>Возвращение усадьбы под крыло С. В. Шереметева</p></div>
+        <div class="tl"><div class="tl__year">1918</div><p>Усадьба была национализирована</p></div>
+        <div class="tl"><div class="tl__year">1960</div><p>Усадьба взята под госохрану и отреставрирована</p></div>
+      </div>
+    </div>
+
+    <div class="history__extra">
+      <div class="hcard reveal"><svg class="star"><use href="#star"/></svg><h3>Период Шереметевых</h3><p>При Шереметевых усадьба получила свой нынешний облик: перестройки главного дома, флигели и регулярный парк.</p></div>
+      <div class="hcard reveal"><svg class="star"><use href="#star"/></svg><h3>Ботанический сад</h3><p>Круглые и полукруглые площадки сада повторяют исторический рисунок генплана и снова засаживаются растениями.</p></div>
+      <div class="hcard reveal"><svg class="star"><use href="#star"/></svg><h3>Минералы в галереях</h3><p>В анфиладе галерей главного дома размещена выставка минералов — без вмешательства в исторические интерьеры.</p></div>
+    </div>
+    <div class="archive reveal">
+      <figure><img src="fence.jpg" alt="Кованые ворота усадьбы"><figcaption>Кованые ворота с монограммой — деталь, ставшая основой фирменного знака</figcaption></figure>
+      <figure><img src="manorbw.jpg" alt="Архивная фотография главного дома"><figcaption>Архивная фотография главного дома. Сюда можно добавить генпланы и фото с фонтаном</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ===== КАРТА ПАРКА ===== -->
+<section class="section" id="map">
+  <div class="container">
+    <div class="section__head reveal">
+      <div class="eyebrow">Карта парка</div>
+      <h2>Интерактивная схема территории</h2>
+      <p>Нажмите на зону или точку на схеме, чтобы узнать о ней подробнее.</p>
+      <div class="divider"><svg class="star"><use href="#star"/></svg></div>
+    </div>
+    <div class="parkmap">
+      <div class="reveal">
+        <div class="map-wrap">
+          <svg viewBox="0 0 640 520" id="parksvg" role="img" aria-label="Схема парка усадьбы">
+            <defs>
+              <pattern id="trees" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="9" cy="9" r="3" fill="#569365" opacity=".25"/></pattern>
+            </defs>
+            <!-- граница территории -->
+            <path d="M120 40 L330 20 L470 70 L600 60 L620 230 L580 330 L610 470 L380 500 L250 470 L150 490 L40 400 L60 240 L20 150 Z" fill="#eaf1e4" stroke="#b44a3c" stroke-width="2.5" stroke-dasharray="0"/>
+            <path d="M120 40 L330 20 L470 70 L600 60 L620 230 L580 330 L610 470 L380 500 L250 470 L150 490 L40 400 L60 240 L20 150 Z" fill="url(#trees)"/>
+            <!-- зоны -->
+            <path class="zone" data-place="angl" d="M60 150 L200 120 L240 230 L150 300 L70 260 Z" fill="#a8cba0" tabindex="0"/>
+            <path class="zone" data-place="aromat" d="M470 80 L590 72 L605 200 L500 190 Z" fill="#d9b6e0" tabindex="0"/>
+            <path class="zone" data-place="botsad" d="M300 260 L430 250 L450 360 L310 380 Z" fill="#f2b6a0" tabindex="0"/>
+            <path class="zone" data-place="scena" d="M160 320 L290 290 L300 400 L180 430 Z" fill="#c6d1e6" tabindex="0"/>
+            <path class="zone" data-place="tropa" d="M450 230 L590 240 L560 330 L590 450 L470 460 L460 360 Z" fill="#f6dba8" tabindex="0"/>
+            <path class="zone" data-place="vodoem" d="M540 300 C575 330 580 420 560 455 C545 430 530 360 540 300Z" fill="#a9d3e6" tabindex="0"/>
+            <!-- ботанический сад: круглые площадки -->
+            <g pointer-events="none" fill="none" stroke="#fff" stroke-width="2.2" opacity=".9">
+              <circle cx="345" cy="300" r="22"/><circle cx="405" cy="300" r="22"/><path d="M335 365 a30 30 0 0 1 60 0"/><circle cx="375" cy="335" r="10"/>
+            </g>
+            <!-- главный дом и оранжерея -->
+            <g class="zone" data-place="dom" tabindex="0">
+              <rect x="250" y="150" width="140" height="44" rx="4" fill="#e1c796" stroke="#203327" stroke-width="1.5"/>
+              <rect x="222" y="160" width="28" height="24" fill="#e1c796" stroke="#203327" stroke-width="1.5"/>
+              <rect x="390" y="160" width="28" height="24" fill="#e1c796" stroke="#203327" stroke-width="1.5"/>
+              <circle cx="320" cy="172" r="13" fill="#d4b77d" stroke="#203327" stroke-width="1.5"/>
+            </g>
+            <rect class="zone" data-place="oranzhereya" x="420" y="210" width="70" height="26" rx="13" fill="#b9d7b3" stroke="#203327" stroke-width="1.5" tabindex="0"/>
+            <!-- липовая аллея -->
+            <g class="zone" data-place="alleya" tabindex="0">
+              <path d="M320 196 L320 290 L250 470" stroke="#7fae86" stroke-width="16" fill="none" stroke-linecap="round" opacity=".55"/>
+              <path d="M320 196 L320 290 L250 470" stroke="#203327" stroke-width="2" fill="none" stroke-dasharray="2 9" stroke-linecap="round"/>
+            </g>
+            <!-- кольцевой маршрут -->
+            <path d="M90 200 C150 90 420 60 560 120 C620 220 520 300 560 420 C430 490 220 480 120 420 C60 350 70 260 90 200Z" fill="none" stroke="#b44a3c" stroke-width="1.6" stroke-dasharray="6 6" opacity=".7" pointer-events="none"/>
+            <!-- точки -->
+            <g class="poi" data-place="kofe" tabindex="0"><circle class="poi__dot" cx="262" cy="455" r="10" fill="#203327"/><text x="262" y="459" text-anchor="middle" fill="#fff" font-size="11" font-family="Manrope">☕</text></g>
+            <g class="poi" data-place="angl" tabindex="0"><circle class="poi__dot" cx="130" cy="220" r="10" fill="#569365"/><text x="130" y="224" text-anchor="middle" fill="#fff" font-size="10">◆</text></g>
+            <!-- подписи -->
+            <g font-family="Manrope" font-size="12" font-weight="600" fill="#203327" pointer-events="none">
+              <text x="320" y="142" text-anchor="middle">Главный дом</text>
+              <text x="455" y="252" text-anchor="middle">Оранжерея</text>
+              <text x="120" y="180">Английский сад</text>
+              <text x="535" y="140" text-anchor="middle">Сад ароматов</text>
+              <text x="380" y="395" text-anchor="middle">Ботанический сад</text>
+              <text x="232" y="380" text-anchor="middle">Сцена</text>
+              <text x="510" y="420" text-anchor="middle">Сенсорная тропа</text>
+              <text x="338" y="240" transform="rotate(90 338 240)">Липовая аллея</text>
+              <text x="285" y="490">Вход · кофейня</text>
+            </g>
+          </svg>
+        </div>
+        <div class="map-legend" id="legend"></div>
+      </div>
+      <aside class="place reveal" id="place" aria-live="polite"></aside>
+    </div>
+
+    <div class="qr-band reveal">
+      <svg class="qr" viewBox="0 0 29 29" aria-hidden="true" id="qrdemo"></svg>
+      <div>
+        <h3>QR-коды в парке и галереях</h3>
+        <p>У объектов парка и рядом с экспонатами стоят небольшие таблички с QR-кодом. Наведите камеру телефона — откроется страница с описанием и аудиогидом. Исторические интерьеры остаются нетронутыми.</p>
+      </div>
+      <a class="btn btn--green" href="guide.html?place=alleya">Пример страницы</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ВИРТУАЛЬНЫЙ ТУР ===== -->
+<section class="section dark" id="tour">
+  <div class="container">
+    <div class="section__head reveal">
+      <div class="eyebrow">Виртуальный тур</div>
+      <h2>Прогулка по залам, не выходя из дома</h2>
+      <p>Панорамы залов и выставочных галерей для тех, кто ещё не был в усадьбе.</p>
+      <div class="divider"><svg class="star"><use href="#star"/></svg></div>
+    </div>
+    <div class="tour reveal">
+      <div class="tour__stage" id="stage">
+        <div class="tour__pano" id="pano"></div>
+        <div class="tour__title" id="stageTitle"></div>
+        <div class="tour__hint">⟷ Потяните, чтобы осмотреться</div>
+      </div>
+      <div class="tour__list" id="tourList"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== АРЕНДА ===== -->
+<section class="section cream" id="rent">
+  <div class="container rent">
+    <div class="reveal">
+      <div class="eyebrow">Аренда</div>
+      <h2>Площадки для ваших событий</h2>
+      <p>Сцена, залы и мастерские усадьбы доступны для концертов, лекций, фестивалей, съёмок и частных мероприятий — с учётом требований к объекту наследия.</p>
+      <div class="spaces">
+        <div class="space"><img src="benches.jpg" alt=""><div><h3>Сцена и лужайка</h3><p>Концерты, кинопоказы, фестивали под открытым небом.</p><span>до 500 гостей · май–сентябрь</span></div></div>
+        <div class="space"><img src="gallery.jpg" alt=""><div><h3>Выставочные галереи</h3><p>Временные экспозиции на трансформируемых перегородках.</p><span>до 120 гостей · круглый год</span></div></div>
+        <div class="space"><img src="masks.jpg" alt=""><div><h3>Парадный зал</h3><p>Камерные концерты, лекции, приёмы и иммерсивные программы.</p><span>до 80 гостей · круглый год</span></div></div>
+        <div class="space"><img src="flower.jpg" alt=""><div><h3>Мастерские во флигеле</h3><p>Корпоративные мастер-классы, творческие встречи.</p><span>до 25 гостей · круглый год</span></div></div>
+      </div>
+    </div>
+    <div class="form reveal" id="rentForm">
+      <form data-form="rent">
+        <h3>Заявка на аренду</h3>
+        <div class="field"><label for="r-name">Имя и организация</label><input id="r-name" name="name" required placeholder="Анна, ООО «Сад»"></div>
+        <div class="row2">
+          <div class="field"><label for="r-phone">Телефон</label><input id="r-phone" name="phone" type="tel" required placeholder="+7 (900) 000-00-00"></div>
+          <div class="field"><label for="r-mail">E-mail</label><input id="r-mail" name="email" type="email" placeholder="mail@example.ru"></div>
+        </div>
+        <div class="field"><label for="r-space">Площадка</label>
+          <select id="r-space" name="space"><option>Сцена и лужайка</option><option>Выставочные галереи</option><option>Парадный зал</option><option>Мастерские во флигеле</option><option>Пока не знаю</option></select>
+        </div>
+        <div class="row2">
+          <div class="field"><label for="r-date">Дата</label><input id="r-date" name="date" type="date"></div>
+          <div class="field"><label for="r-guests">Гостей</label><input id="r-guests" name="guests" type="number" min="1" inputmode="numeric" placeholder="0"></div>
+        </div>
+        <div class="field"><label for="r-msg">О мероприятии</label><textarea id="r-msg" name="message" rows="3" placeholder="Формат, время, пожелания"></textarea></div>
+        <button class="btn" type="submit" style="width:100%">Отправить заявку</button>
+        <small class="note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</small>
+      </form>
+      <div class="form__ok"><svg class="star star--glow" style="width:56px;height:56px"><use href="#star"/></svg><h3>Спасибо!</h3><p>Заявка отправлена. Мы свяжемся с вами в течение рабочего дня.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== КОНТАКТЫ ===== -->
+<section class="section" id="contacts">
+  <div class="container">
+    <div class="section__head reveal">
+      <div class="eyebrow">Контакты</div>
+      <h2>Как добраться</h2>
+      <div class="divider"><svg class="star"><use href="#star"/></svg></div>
+    </div>
+    <div class="contacts">
+      <div class="contacts__info reveal">
+        <div class="cbox"><h3>Адрес</h3><p>Москва, Новомосковский АО, поселение Михайловско-Ярцевское, усадьба Михайловское</p></div>
+        <div class="cbox"><h3>Часы работы</h3><ul><li class="dist"><span>Парк</span><b>ежедневно, 8:00–22:00</b></li><li class="dist"><span>Главный дом</span><b>вт–вс, 10:00–19:00</b></li><li class="dist"><span>Кофейня</span><b>ежедневно, 10:00–20:00</b></li></ul></div>
+        <div class="cbox"><h3>Транспорт</h3><p>Автобусы: е144, с996, 161, 513</p></div>
+        <div class="cbox"><h3>Расстояние</h3><ul><li class="dist"><span>От Троицка</span><b>18 км</b></li><li class="dist"><span>От МКАД (45-й км)</span><b>52 км</b></li><li class="dist"><span>От центра Москвы</span><b>74 км</b></li></ul></div>
+        <div class="cbox"><h3>Связаться</h3><p>+7 (000) 000-00-00 · info@usadba-mikhaylovskoe.ru</p></div>
+      </div>
+      <div class="map-frame reveal">
+        <iframe title="Усадьба Михайловское на Яндекс Картах" loading="lazy"
+          src="https://yandex.ru/map-widget/v1/?text=%D0%A3%D1%81%D0%B0%D0%B4%D1%8C%D0%B1%D0%B0%20%D0%9C%D0%B8%D1%85%D0%B0%D0%B9%D0%BB%D0%BE%D0%B2%D1%81%D0%BA%D0%BE%D0%B5%20%D0%A8%D0%B5%D1%80%D0%B5%D0%BC%D0%B5%D1%82%D0%B5%D0%B2%D1%8B%D1%85&z=13"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ПОДВАЛ ===== -->
+<footer class="footer">
+  <div class="footer__drawing" role="img" aria-label="Фасад главного дома"></div>
+  <div class="container footer__inner">
+    <div>© 2026 Усадьба Михайловское · проект команды №1, форум «Наследие»</div>
+    <div class="footer__links"><a href="#afisha">Афиша</a><a href="#map">Карта</a><a href="#rent">Аренда</a><a href="#contacts">Контакты</a></div>
+  </div>
+</footer>
+
+<!-- ===== МОДАЛКА ЗАПИСИ ===== -->
+<div class="modal" id="modal" aria-hidden="true">
+  <div class="modal__box form" id="bookForm">
+    <button class="modal__close" data-close aria-label="Закрыть">×</button>
+    <form data-form="booking">
+      <h3>Запись на событие</h3>
+      <div class="modal__event" id="mEvent"></div>
+      <input type="hidden" name="event" id="mEventInput">
+      <div class="field"><label for="b-name">Имя</label><input id="b-name" name="name" required placeholder="Как к вам обращаться"></div>
+      <div class="row2">
+        <div class="field"><label for="b-phone">Телефон</label><input id="b-phone" name="phone" type="tel" required placeholder="+7 (900) 000-00-00"></div>
+        <div class="field"><label for="b-count">Билетов</label><input id="b-count" name="tickets" type="number" min="1" max="10" inputmode="numeric" required placeholder="0"></div>
+      </div>
+      <div class="field"><label for="b-mail">E-mail для билета</label><input id="b-mail" name="email" type="email" required placeholder="mail@example.ru"></div>
+      <div class="total"><span>Итого</span><b id="mTotal">—</b></div>
+      <button class="btn" type="submit" style="width:100%" id="mSubmit">Перейти к оплате</button>
+      <small class="note">Оплата проходит через сервис продажи билетов. Билет придёт на почту.</small>
+    </form>
+    <div class="form__ok"><svg class="star star--glow" style="width:56px;height:56px"><use href="#star"/></svg><h3>Вы записаны!</h3><p>Подтверждение и билет придут на указанную почту.</p><button class="btn" data-close>Хорошо</button></div>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
